@@ -1,0 +1,84 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% load django_bootstrap5 %}
+
+
+{% block content %}
+<div class="container-fluid p-3 mx-auto">
+    <div class="row">
+        <div class="col-md-9 p-5 border-end mt-5">
+            <h1 class="display1">Write your Article ✒️</h1>
+            <form method="post">
+                {% csrf_token %}
+                {% bootstrap_form article_form %}
+                <!-- this line is important -->
+                {{ article_form.media }}
+                {% bootstrap_button "Save" type="submit" %}
+            </form>
+        </div>
+        <div class="col-md-3 px-5 mt-5 border-end">
+            <div class="card mb-3 border-0">
+                <div class="card-header bg-transparent border-0">
+                    <h3 class="card-title">Add Media</h3>
+                </div>
+                <form action="" method="post" class="card-body" id="media-form" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {% csrf_token %}
+                    {% bootstrap_form image_form %}
+                    {% bootstrap_button "Add Media" type="submit" %}
+                </form>
+            </div>
+
+            <div class="card mb-3 border-0">
+                <div class="card-header bg-transparent border-0">
+                    <h3>Add New Category</h3>
+                </div>
+                <form method="post" class="card-body" id="catform">
+                    {% csrf_token %}
+                    {% bootstrap_form category_form %}
+                    {% bootstrap_button "Add Category" type="submit" %}
+                </form>
+            </div>
+            <div class="card border-0">
+                <div class="card-header bg-transparent border-0">
+                    <h3 class="card-title">Add Tags</h3>
+                </div>
+                <form action="" method="post" class="card-body" id="tagform">
+                    {% csrf_token %}
+                    {% bootstrap_form tag_form %}
+                    {% bootstrap_button "Add Tags" type="submit" %}
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block css %}
+<style>
+    #id_tags,
+    #id_status {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: flex-start;
+        align-items: flex-end;
+    }
+
+    #id_tags>.form-check,
+    #id_status>.form-check {
+        margin: 0 2rem 1rem 0;
+    }
+</style>
+{% endblock %}
+
+
+{% block js %}
+<script src="https://code.jquery.com/jquery-3.6.1.min.js"
+    integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script src="{% static 'js/create.js' %}"></script>
+
+
+
+{% endblock %}

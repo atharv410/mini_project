@@ -1,0 +1,53 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-3 overlay px-0 rounded-3">
+    <div class="p-5 mb-4 bg-transparent rounded-3 shadow-lg hero ">
+        <div class="container-fluid py-5 text-light">
+            <h1 class="display-5 fw-bold">Image Gallery</h1>
+            <p class="col-md-8 fs-4">this is a django image gallery</p>
+            <a href="{% url 'add_image' %}" class="btn btn-primary">
+                <i class="bi bi-cloud-arrow-up"></i> Add Image
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        {% for item in images %}
+        <div class="col-lg-3 col-md-6 mb-3">
+            <div class="card">
+                <img class="card-img-top" src="{{item.image.url}}" alt="{{item.title}}">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.title}}</h5>
+                    <p class="card-text">{{item.category}}</p>
+                </div>
+                <div class="card-footer">
+                    <a href="{% url 'view_image' item.id %}" class="btn "><i class="bi bi-eye text-primary"></i></a>
+                    <a class="btn" href="{% url 'delete_image' item.id %}"><i class="bi bi-trash text-danger"></i></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}
+
+{% block css %}
+<style>
+    .overlay .hero {
+        backdrop-filter: blur(5px) saturate(100%) brightness(70%);
+    }
+
+    .overlay{
+        background-image: url('{% static "images/hero.jpg" %}');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .hero {
+        text-shadow: 0 0 3px #000;
+    }
+</style>
+{% endblock css %}

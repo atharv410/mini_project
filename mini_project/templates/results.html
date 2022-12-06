@@ -1,0 +1,37 @@
+{% extends 'layout/base.html' %}
+{% load static %}
+{% block content %}
+
+<section class="container-fluid section1 text-white">
+    <div class="row">
+        <div class="col-md-12 px-0">
+            <h1 class="text-center display-1">Success</h1>
+            <p class="text-center lead px-5">You can now view your data on saved data page
+            </p>
+        </div>
+    </div>
+</section>
+
+
+
+
+{% endblock content %}
+
+{% block css %}
+<style>
+    .section1 {
+        background-color: rgb(231, 215, 151);
+        padding: 10rem 0;
+        background-image: linear-gradient(rgba(227, 131, 131, 0.5), rgba(106, 159, 238, 0.5)), url('static/images/hero.jpg');
+        text-shadow: 2px 2px 4px #d42e2e;
+    }
+    .section1 .row{
+        margin-right: 0 !important;
+    }
+
+    .section2 {
+        padding: 8rem 0;
+    }
+
+</style>
+{% endblock css %}

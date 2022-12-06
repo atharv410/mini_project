@@ -1,0 +1,36 @@
+{% extends 'layout/base.html' %}
+{% load django_bootstrap5 %}
+{% load static %}
+{% block content %}
+
+<div class="container pt-5">
+    <div class="row justify-content-center align-items-center 100h pt-5">
+        <div class="col-lg-8 ">
+            <form action="{% url 'collect_data' %}" method="post" class="card p-3">
+                {% csrf_token %}
+                <div class="mb-3">
+                  <label for="query" class="form-label">Web crawler home</label>
+                  <input type="text"
+                      class="form-control form-control-lg" name="query" id="query" aria-describedby="queryHelp" placeholder="Search product category">
+                  <small id="queryHelp" class="form-text text-muted">Enter a product category, we will get its data using bots</small>
+                </div>
+                <button name="botSubmit" id="botSubmit" class="btn btn-primary">
+                    Start Collecting data
+                </button>
+            </form>
+        </div>
+        <div class="col-lg-8">
+            <img src="https://image.slidesharecdn.com/webcrawler-170731123651/95/webcrawler-7-638.jpg?cb=1501504714" class="img-fluid rounded-top vw-100" alt="">
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+{% block css %}
+<style>
+    
+</style>
+{% endblock %}
+{% block js %}
+
+{% endblock %}

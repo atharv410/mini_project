@@ -1,0 +1,7 @@
+requests
+beautifulsoup4
+django
+django-bootstrap5
+html5lib
+pandas
+lxml
